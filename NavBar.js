@@ -124,11 +124,11 @@ export default class NavBar extends React.Component {
         toValue: 0,
         duration: 200,
       }).start(() => {
-        this.state.navBarYPos.setValue(-NAV_HEIGHT);
+        this.state.navBarYPos.setValue(NAV_HEIGHT);
       });
     } else if (type === 'slide') {
       Animated.timing(this.state.navBarYPos, {
-        toValue: -NAV_HEIGHT,
+        toValue: NAV_HEIGHT,
         duration: 100,
       }).start(() => {
         this.state.navBarOpacity.setValue(0);
@@ -238,7 +238,7 @@ export default class NavBar extends React.Component {
           position: 'absolute',
           left: 0,
           right: 0,
-          top: 0,
+          top: 7,
           bottom: 0,
         },
       });
@@ -583,6 +583,7 @@ export default class NavBar extends React.Component {
                 !isCurrentRoute && !isPrevRoute ? {
                   opacity: 0,
                 } : null,
+                { borderTopColor: this.props.underlay.borderTopColor }
               ]}
               pointerEvents="box-none"
             >
@@ -692,7 +693,7 @@ const styles = StyleSheet.create({
   navBar: {
     position: 'absolute',
     left: 0,
-    top: 0,
+    bottom: 0,
     right: 0,
     flexDirection: 'row',
   },
@@ -700,10 +701,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    top: 0,
+    top: 7,
     bottom: 0,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    borderTopWidth: 1,
+    backgroundColor: 'white'
   },
   animatedWrapper: {
     flex: 1,
@@ -721,8 +724,11 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   titlePart_android: {
-    flex: 1,
-    paddingLeft: 10,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
   },
   rightPartContainer: {
     paddingRight: PADDING_HORIZONTAL,

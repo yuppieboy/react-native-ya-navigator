@@ -127,8 +127,8 @@ export default class Scene extends React.Component {
         style={[
           {
             flex: 1,
-            paddingTop: this.props.paddingTop ?
-              Scene.navBarHeight :
+            paddingBottom: this.props.paddingBottom ?
+              Scene.navBarHeight - 7:
               0,
           },
           this.props.style,
@@ -141,7 +141,7 @@ export default class Scene extends React.Component {
 
   static propTypes = {
     style: ViewPropTypes.style,
-    paddingTop: PropTypes.bool,
+    paddingBottom: PropTypes.bool,
     delegate: (props, propName) => {
       if (props[propName] && !(props[propName] instanceof React.Component)) {
         return new Error('Scene delegate should be instance of React.Component');
@@ -150,7 +150,7 @@ export default class Scene extends React.Component {
   };
 
   static defaultProps = {
-    paddingTop: true,
+    paddingBottom: true,
   };
 
   static navBarHeight = FBNavigator.NavigationBar.Styles.General.TotalNavHeight +
